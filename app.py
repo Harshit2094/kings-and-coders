@@ -42,7 +42,7 @@ def hangman():
         else:
             print("Correct guess!")
         # Check if the word has been completely guessed
-        if all(letter in guessed_letters for letter in word):
+        if all(letter in guessed_letters for letter in word.lower()):
             print("Congratulations! You've guessed the word:", word)
             break
     else:
