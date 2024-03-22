@@ -1,5 +1,55 @@
-import random
 import game
+
+HANGMANPICS = ['''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========''']
 
 
 def display_word(word, guessed_letters):
@@ -14,18 +64,17 @@ def display_word(word, guessed_letters):
 def hangman():
     word  = game.generate_phrase()
     hint = game.get_hint(word)
-    # Initialize variables
     print(hint)
     guessed_letters = []
-    attempts = 6  # Number of attempts allowed
+    attempts = 6
+    print(HANGMANPICS[0])  
     while attempts > 0:
         # Display current status
-
         print(display_word(word, guessed_letters))
         print(f"Attempts left: {attempts}")
-        # Ask for user input
+
         guess = input("Guess a letter: ").lower()
-        # Check if the guess is a single letter
+
         if len(guess) != 1 or not guess.isalpha():
             print("Please enter a single letter.")
             continue
@@ -38,6 +87,7 @@ def hangman():
         # Check if the guess is correct
         if guess not in word:
             print("Incorrect guess!")
+            print(HANGMANPICS[len(HANGMANPICS) - attempts])
             attempts -= 1
         else:
             print("Correct guess!")
