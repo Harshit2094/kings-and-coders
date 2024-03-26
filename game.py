@@ -42,7 +42,7 @@ def generate_phrase():
         "model": "gpt-3.5-turbo-16k-0613",
         "messages": [
             {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": "Give me only a phrase or a word for a Hangman game. The phrase or word should not be too long. only write the word or phrase"}
+            {"role": "user", "content": "Give me only a phrase or a word with no full stops or other punctuations for a Hangman game. The phrase or word should not be too long. only write the word or phrase"}
         ],
         "max_tokens": 500,
         "temperature": 1.5,
