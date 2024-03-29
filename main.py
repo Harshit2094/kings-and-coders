@@ -7,9 +7,7 @@ import game
 window = Tk()
 window.title('Hangman')
 
-wurd = game.generate_phrase()
-print(wurd)
-hint = game.get_hint(wurd)
+
 
 photos = [PhotoImage(file="images/hang0.png"), PhotoImage(file="images/hang1.png"), PhotoImage(file="images/hang2.png"),
 PhotoImage(file="images/hang3.png"), PhotoImage(file="images/hang4.png"), PhotoImage(file="images/hang5.png"),
@@ -21,7 +19,9 @@ def newGame():
 	global the_word_withSpaces
 	global numberOfGuesses
 	numberOfGuesses = 0
-	
+	wurd = game.generate_phrase()
+	print(wurd)
+	hint = game.get_hint(wurd)
 	the_word = (wurd.lower()).rstrip('.')
 	the_word_withSpaces = " ".join(the_word)
 	lblWord.set(' '.join("_" * len(the_word)))
