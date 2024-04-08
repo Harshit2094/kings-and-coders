@@ -26,6 +26,9 @@ def newGame():
 	the_word_withSpaces = " ".join(the_word)
 	lblWord.set(' '.join("_" * len(the_word)))
 	hint_label.set(f"Hint: {hint}")
+	tries_label.config(text=f"Tries left: {11 - numberOfGuesses}") 
+	imgLabel.config(image=photos[0])
+
 
 def guess(letter):
 	global numberOfGuesses
@@ -47,10 +50,14 @@ def guess(letter):
 				if numberOfGuesses==11:
 						messagebox.showwarning("Hangman","Game Over")
 			guesses.append(letter)
+	tries_label.config(text=f"Tries left: {11 - numberOfGuesses}")
 
 
 imgLabel=Label(window)
 imgLabel.grid(row=0, column=0, columnspan=3, padx=10, pady=40)
+
+tries_label = Label(window, font=('Helvetica 18'))
+tries_label.grid(row=5, column=0, columnspan=9)
 
 hint_label = StringVar()
 Label(window, textvariable=hint_label, font=('Helvetica 18')).grid(row=4, column=0, columnspan=9)
