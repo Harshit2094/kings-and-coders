@@ -6,7 +6,7 @@ import game
 
 window = Tk()
 window.title('Hangman')
-
+guesses = []
 
 
 photos = [PhotoImage(file="images/hang0.png"), PhotoImage(file="images/hang1.png"), PhotoImage(file="images/hang2.png"),
@@ -39,11 +39,14 @@ def guess(letter):
 				lblWord.set("".join(guessed))
 				if lblWord.get()==the_word_withSpaces:
 					messagebox.showinfo("Hangman","You guessed it!")
+			guesses.append(letter)
 		else:
-			numberOfGuesses += 1
-			imgLabel.config(image=photos[numberOfGuesses])
-			if numberOfGuesses==11:
-					messagebox.showwarning("Hangman","Game Over")
+			if letter not in guesses:
+				numberOfGuesses += 1
+				imgLabel.config(image=photos[numberOfGuesses])
+				if numberOfGuesses==11:
+						messagebox.showwarning("Hangman","Game Over")
+			guesses.append(letter)
 
 
 imgLabel=Label(window)
